@@ -2,9 +2,9 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import * as Dialog from "@radix-ui/react-dialog";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import logoImg from "../assets/logo.svg";
-import NewHabitForm from "./NewHabitForm";
+import {NewHabitForm} from "./NewHabitForm";
 
-export default function Header() {
+export function Header() {
   return (
     <div className="w-full max-w-3xl mx-auto flex items-center justify-between">
       <img src={logoImg} alt="Habits" />
