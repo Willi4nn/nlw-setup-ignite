@@ -1,5 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
-import { useEffect, useState } from "react";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { useState, useCallback } from "react";
 import { View, Text, ScrollView, Alert } from "react-native";
 import { HabitDay, day_size } from "../components/HabitDay";
 import { Header } from "../components/Header";
@@ -30,7 +30,6 @@ export function Home() {
     try {
       setLoading(true);
       const response = await api.get("/summary");
-      console.log(response.data);
       setSummary(response.data);
     } catch (error) {
       Alert.alert("Ops", "Não foi possível carregar o sumário");
@@ -40,9 +39,11 @@ export function Home() {
     }
   }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchData();
+    }, [])
+  );
 
   if (loading) {
     return <Loading />;

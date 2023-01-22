@@ -40,8 +40,8 @@ export function New() {
   async function handleCreateNewHabit() {
     try {
       if (!title.trim() || weekDays.length === 0) {
-        Alert.alert(
-          "Novo habito",
+        return Alert.alert(
+          "Novo hábito",
           "O hábito precisa de um nome e a periodicidade"
         );
       }
